@@ -96,8 +96,8 @@
         <script src="data/Bairros_2.js"></script>
         <script src="data/Ruas_3.js"></script>
         <script src="data/20042020_4.js"></script>
-        <script src="data/barreirasanita_5.js"></script>
-        <script src="data/postossaude_6.js"></script>
+        <script src="data/Barreirassanitrias_5.js"></script>
+        <script src="data/Unidadesdesade_6.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -117,7 +117,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[-22.302491066473657,-53.28828410449948],[-22.28434261760301,-53.24847343522036]]);
+        }).fitBounds([[-22.304156186657547,-53.28683120524917],[-22.2860077377869,-53.246940914631494]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -408,7 +408,7 @@
         });
         bounds_group.addLayer(layer_20042020_4);
         map.addLayer(layer_20042020_4);
-        function pop_barreirasanita_5(feature, layer) {
+        function pop_Barreirassanitrias_5(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -432,11 +432,11 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_barreirasanita_5_0(feature) {
+        function style_Barreirassanitrias_5_0(feature) {
             switch(String(feature.properties['Nome'])) {
                 case 'Turma Alpha':
                     return {
-                pane: 'pane_barreirasanita_5',
+                pane: 'pane_Barreirassanitrias_5',
                 shape: 'diamond',
                 radius: 8.8,
                 opacity: 1,
@@ -453,7 +453,7 @@
                     break;
                 case 'Turma Bravo':
                     return {
-                pane: 'pane_barreirasanita_5',
+                pane: 'pane_Barreirassanitrias_5',
                 shape: 'diamond',
                 radius: 8.8,
                 opacity: 1,
@@ -470,27 +470,27 @@
                     break;
             }
         }
-        map.createPane('pane_barreirasanita_5');
-        map.getPane('pane_barreirasanita_5').style.zIndex = 405;
-        map.getPane('pane_barreirasanita_5').style['mix-blend-mode'] = 'normal';
-        var layer_barreirasanita_5 = new L.geoJson(json_barreirasanita_5, {
+        map.createPane('pane_Barreirassanitrias_5');
+        map.getPane('pane_Barreirassanitrias_5').style.zIndex = 405;
+        map.getPane('pane_Barreirassanitrias_5').style['mix-blend-mode'] = 'normal';
+        var layer_Barreirassanitrias_5 = new L.geoJson(json_Barreirassanitrias_5, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_barreirasanita_5',
-            layerName: 'layer_barreirasanita_5',
-            pane: 'pane_barreirasanita_5',
-            onEachFeature: pop_barreirasanita_5,
+            dataVar: 'json_Barreirassanitrias_5',
+            layerName: 'layer_Barreirassanitrias_5',
+            pane: 'pane_Barreirassanitrias_5',
+            onEachFeature: pop_Barreirassanitrias_5,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.shapeMarker(latlng, style_barreirasanita_5_0(feature));
+                return L.shapeMarker(latlng, style_Barreirassanitrias_5_0(feature));
             },
         });
-        bounds_group.addLayer(layer_barreirasanita_5);
-        map.addLayer(layer_barreirasanita_5);
-        function pop_postossaude_6(feature, layer) {
+        bounds_group.addLayer(layer_Barreirassanitrias_5);
+        map.addLayer(layer_Barreirassanitrias_5);
+        function pop_Unidadesdesade_6(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -523,11 +523,11 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_postossaude_6_0(feature) {
+        function style_Unidadesdesade_6_0(feature) {
             switch(String(feature.properties['nome'])) {
                 case 'UBS Anorinda':
                     return {
-                pane: 'pane_postossaude_6',
+                pane: 'pane_Unidadesdesade_6',
                 radius: 8.0,
                 opacity: 1,
                 color: 'rgba(50,87,128,1.0)',
@@ -543,7 +543,7 @@
                     break;
                 case 'UBS Santa Luzia':
                     return {
-                pane: 'pane_postossaude_6',
+                pane: 'pane_Unidadesdesade_6',
                 radius: 8.0,
                 opacity: 1,
                 color: 'rgba(50,87,128,1.0)',
@@ -559,7 +559,7 @@
                     break;
                 case 'UBS Santo Antônio':
                     return {
-                pane: 'pane_postossaude_6',
+                pane: 'pane_Unidadesdesade_6',
                 radius: 8.0,
                 opacity: 1,
                 color: 'rgba(50,87,128,1.0)',
@@ -575,7 +575,7 @@
                     break;
                 case 'UBS Sebastião Martins':
                     return {
-                pane: 'pane_postossaude_6',
+                pane: 'pane_Unidadesdesade_6',
                 radius: 8.0,
                 opacity: 1,
                 color: 'rgba(50,87,128,1.0)',
@@ -591,26 +591,26 @@
                     break;
             }
         }
-        map.createPane('pane_postossaude_6');
-        map.getPane('pane_postossaude_6').style.zIndex = 406;
-        map.getPane('pane_postossaude_6').style['mix-blend-mode'] = 'normal';
-        var layer_postossaude_6 = new L.geoJson(json_postossaude_6, {
+        map.createPane('pane_Unidadesdesade_6');
+        map.getPane('pane_Unidadesdesade_6').style.zIndex = 406;
+        map.getPane('pane_Unidadesdesade_6').style['mix-blend-mode'] = 'normal';
+        var layer_Unidadesdesade_6 = new L.geoJson(json_Unidadesdesade_6, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_postossaude_6',
-            layerName: 'layer_postossaude_6',
-            pane: 'pane_postossaude_6',
-            onEachFeature: pop_postossaude_6,
+            dataVar: 'json_Unidadesdesade_6',
+            layerName: 'layer_Unidadesdesade_6',
+            pane: 'pane_Unidadesdesade_6',
+            onEachFeature: pop_Unidadesdesade_6,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_postossaude_6_0(feature));
+                return L.circleMarker(latlng, style_Unidadesdesade_6_0(feature));
             },
         });
-        bounds_group.addLayer(layer_postossaude_6);
-        map.addLayer(layer_postossaude_6);
+        bounds_group.addLayer(layer_Unidadesdesade_6);
+        map.addLayer(layer_Unidadesdesade_6);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -622,7 +622,7 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'postos-saude<br /><table><tr><td style="text-align: center;"><img src="legend/postossaude_6_UBSAnorinda0.png" /></td><td>UBS Anorinda</td></tr><tr><td style="text-align: center;"><img src="legend/postossaude_6_UBSSantaLuzia1.png" /></td><td>UBS Santa Luzia</td></tr><tr><td style="text-align: center;"><img src="legend/postossaude_6_UBSSantoAntônio2.png" /></td><td>UBS Santo Antônio</td></tr><tr><td style="text-align: center;"><img src="legend/postossaude_6_UBSSebastiãoMartins3.png" /></td><td>UBS Sebastião Martins</td></tr></table>': layer_postossaude_6,'barreira-sanita<br /><table><tr><td style="text-align: center;"><img src="legend/barreirasanita_5_TurmaAlpha0.png" /></td><td>Turma Alpha</td></tr><tr><td style="text-align: center;"><img src="legend/barreirasanita_5_TurmaBravo1.png" /></td><td>Turma Bravo</td></tr></table>': layer_barreirasanita_5,'20-04-2020<br /><table><tr><td style="text-align: center;"><img src="legend/20042020_4_10.png" /></td><td>1</td></tr><tr><td style="text-align: center;"><img src="legend/20042020_4_31.png" /></td><td>3</td></tr></table>': layer_20042020_4,'<img src="legend/Ruas_3.png" /> Ruas': layer_Ruas_3,'<img src="legend/Bairros_2.png" /> Bairros': layer_Bairros_2,'<img src="legend/Perimetro_1.png" /> Perimetro': layer_Perimetro_1,"Google Satellite": layer_GoogleSatellite_0,}).addTo(map);
+        L.control.layers(baseMaps,{'Unidades de saúde<br /><table><tr><td style="text-align: center;"><img src="legend/Unidadesdesade_6_UBSAnorinda0.png" /></td><td>UBS Anorinda</td></tr><tr><td style="text-align: center;"><img src="legend/Unidadesdesade_6_UBSSantaLuzia1.png" /></td><td>UBS Santa Luzia</td></tr><tr><td style="text-align: center;"><img src="legend/Unidadesdesade_6_UBSSantoAntônio2.png" /></td><td>UBS Santo Antônio</td></tr><tr><td style="text-align: center;"><img src="legend/Unidadesdesade_6_UBSSebastiãoMartins3.png" /></td><td>UBS Sebastião Martins</td></tr></table>': layer_Unidadesdesade_6,'Barreiras sanitárias<br /><table><tr><td style="text-align: center;"><img src="legend/Barreirassanitrias_5_TurmaAlpha0.png" /></td><td>Turma Alpha</td></tr><tr><td style="text-align: center;"><img src="legend/Barreirassanitrias_5_TurmaBravo1.png" /></td><td>Turma Bravo</td></tr></table>': layer_Barreirassanitrias_5,'20-04-2020<br /><table><tr><td style="text-align: center;"><img src="legend/20042020_4_10.png" /></td><td>1</td></tr><tr><td style="text-align: center;"><img src="legend/20042020_4_31.png" /></td><td>3</td></tr></table>': layer_20042020_4,'<img src="legend/Ruas_3.png" /> Ruas': layer_Ruas_3,'<img src="legend/Bairros_2.png" /> Bairros': layer_Bairros_2,'<img src="legend/Perimetro_1.png" /> Perimetro': layer_Perimetro_1,"Google Satellite": layer_GoogleSatellite_0,}).addTo(map);
         setBounds();
         var i = 0;
         layer_Bairros_2.eachLayer(function(layer) {
