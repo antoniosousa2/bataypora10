@@ -19,11 +19,11 @@
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <div id="menu">
 		<ul>
-			<li><a href="index.html">HOME</a></li>
-			<li><a href="index.html#sobre">SOBRE</a></li>
-			<li><a href="index.html#cidadesatendidas">CIDADES ATENDIDAS</a></li>
-			<li><a href="index.html#mapasms">MAPAS COVID-19 (MS)</a></li>
-			<li><a href="contato.html">CONTATO</a></li>
+			<li><a href="https://projetoextmapeamentocovid-19ufgd.netlify.app/">HOME</a></li>
+			<li><a href="https://projetoextmapeamentocovid-19ufgd.netlify.app/index.html#sobre">SOBRE</a></li>
+			<li><a href="">CIDADES ATENDIDAS</a></li>
+			<li><a href="https://projetoextmapeamentocovid-19ufgd.netlify.app/index.html#mapasms">MAPAS COVID-19 (MS)</a></li>
+			<li><a href="https://projetoextmapeamentocovid-19ufgd.netlify.app/contato.html">CONTATO</a></li>
 		</ul>
 	</div>
 		<style>
@@ -92,12 +92,14 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="js/leaflet-search.js"></script>
         <script src="data/Perimetro_1.js"></script>
-        <script src="data/Bairros_2.js"></script>
-        <script src="data/Ruas_3.js"></script>
-        <script src="data/20042020_4.js"></script>
-        <script src="data/Barreirassanitrias_5.js"></script>
-        <script src="data/Unidadesdesade_6.js"></script>
+        <script src="data/Percentualdosdestinos_2.js"></script>
+        <script src="data/Bairros_3.js"></script>
+        <script src="data/Ruas_4.js"></script>
+        <script src="data/20042020_5.js"></script>
+        <script src="data/Barreirassanitrias_6.js"></script>
+        <script src="data/Unidadesdesade_7.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -117,7 +119,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[-22.304156186657547,-53.28683120524917],[-22.2860077377869,-53.246940914631494]]);
+        }).fitBounds([[-22.302044366602402,-53.28292959431795],[-22.28768517910244,-53.251368100193034]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -189,7 +191,7 @@
         });
         bounds_group.addLayer(layer_Perimetro_1);
         map.addLayer(layer_Perimetro_1);
-        function pop_Bairros_2(feature, layer) {
+        function pop_Percentualdosdestinos_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -212,13 +214,129 @@
                     <tr>\
                         <td colspan="2">' + (feature.properties['Nome'] !== null ? autolinker.link(feature.properties['Nome'].toLocaleString()) : '') + '</td>\
                     </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Destino'] !== null ? autolinker.link(feature.properties['Destino'].toLocaleString()) : '') + '</td>\
+                    </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Bairros_2_0() {
+        function style_Percentualdosdestinos_2_0(feature) {
+            switch(String(feature.properties['Destino'])) {
+                case '1.4':
+                    return {
+                pane: 'pane_Percentualdosdestinos_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,253,150,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '1.6':
+                    return {
+                pane: 'pane_Percentualdosdestinos_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(210,255,50,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '1.7':
+                    return {
+                pane: 'pane_Percentualdosdestinos_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '3.1':
+                    return {
+                pane: 'pane_Percentualdosdestinos_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,162,46,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '77.3':
+                    return {
+                pane: 'pane_Percentualdosdestinos_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(189,0,3,1.0)',
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_Percentualdosdestinos_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(192,192,192,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Percentualdosdestinos_2');
+        map.getPane('pane_Percentualdosdestinos_2').style.zIndex = 402;
+        map.getPane('pane_Percentualdosdestinos_2').style['mix-blend-mode'] = 'normal';
+        var layer_Percentualdosdestinos_2 = new L.geoJson(json_Percentualdosdestinos_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Percentualdosdestinos_2',
+            layerName: 'layer_Percentualdosdestinos_2',
+            pane: 'pane_Percentualdosdestinos_2',
+            onEachFeature: pop_Percentualdosdestinos_2,
+            style: style_Percentualdosdestinos_2_0,
+        });
+        bounds_group.addLayer(layer_Percentualdosdestinos_2);
+        map.addLayer(layer_Percentualdosdestinos_2);
+        function pop_Bairros_3(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nome'] !== null ? autolinker.link(feature.properties['Nome'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Destino'] !== null ? autolinker.link(feature.properties['Destino'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Bairros_3_0() {
             return {
-                pane: 'pane_Bairros_2',
+                pane: 'pane_Bairros_3',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '10,5',
@@ -229,21 +347,21 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_Bairros_2');
-        map.getPane('pane_Bairros_2').style.zIndex = 402;
-        map.getPane('pane_Bairros_2').style['mix-blend-mode'] = 'normal';
-        var layer_Bairros_2 = new L.geoJson(json_Bairros_2, {
+        map.createPane('pane_Bairros_3');
+        map.getPane('pane_Bairros_3').style.zIndex = 403;
+        map.getPane('pane_Bairros_3').style['mix-blend-mode'] = 'normal';
+        var layer_Bairros_3 = new L.geoJson(json_Bairros_3, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_Bairros_2',
-            layerName: 'layer_Bairros_2',
-            pane: 'pane_Bairros_2',
-            onEachFeature: pop_Bairros_2,
-            style: style_Bairros_2_0,
+            dataVar: 'json_Bairros_3',
+            layerName: 'layer_Bairros_3',
+            pane: 'pane_Bairros_3',
+            onEachFeature: pop_Bairros_3,
+            style: style_Bairros_3_0,
         });
-        bounds_group.addLayer(layer_Bairros_2);
-        map.addLayer(layer_Bairros_2);
-        function pop_Ruas_3(feature, layer) {
+        bounds_group.addLayer(layer_Bairros_3);
+        map.addLayer(layer_Bairros_3);
+        function pop_Ruas_4(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -294,9 +412,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Ruas_3_0() {
+        function style_Ruas_4_0() {
             return {
-                pane: 'pane_Ruas_3',
+                pane: 'pane_Ruas_4',
                 opacity: 1,
                 color: 'rgba(193,193,193,1.0)',
                 dashArray: '',
@@ -307,21 +425,21 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_Ruas_3');
-        map.getPane('pane_Ruas_3').style.zIndex = 403;
-        map.getPane('pane_Ruas_3').style['mix-blend-mode'] = 'normal';
-        var layer_Ruas_3 = new L.geoJson(json_Ruas_3, {
+        map.createPane('pane_Ruas_4');
+        map.getPane('pane_Ruas_4').style.zIndex = 404;
+        map.getPane('pane_Ruas_4').style['mix-blend-mode'] = 'normal';
+        var layer_Ruas_4 = new L.geoJson(json_Ruas_4, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_Ruas_3',
-            layerName: 'layer_Ruas_3',
-            pane: 'pane_Ruas_3',
-            onEachFeature: pop_Ruas_3,
-            style: style_Ruas_3_0,
+            dataVar: 'json_Ruas_4',
+            layerName: 'layer_Ruas_4',
+            pane: 'pane_Ruas_4',
+            onEachFeature: pop_Ruas_4,
+            style: style_Ruas_4_0,
         });
-        bounds_group.addLayer(layer_Ruas_3);
-        map.addLayer(layer_Ruas_3);
-        function pop_20042020_4(feature, layer) {
+        bounds_group.addLayer(layer_Ruas_4);
+        map.addLayer(layer_Ruas_4);
+        function pop_20042020_5(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -354,10 +472,10 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_20042020_4_0(feature) {
+        function style_20042020_5_0(feature) {
             if (feature.properties['Quant2'] >= 1.000000 && feature.properties['Quant2'] <= 1.000000 ) {
                 return {
-                pane: 'pane_20042020_4',
+                pane: 'pane_20042020_5',
                 radius: 4.4,
                 opacity: 1,
                 color: 'rgba(255,255,255,1.0)',
@@ -373,7 +491,7 @@
             }
             if (feature.properties['Quant2'] >= 1.000000 && feature.properties['Quant2'] <= 3.000000 ) {
                 return {
-                pane: 'pane_20042020_4',
+                pane: 'pane_20042020_5',
                 radius: 16.0,
                 opacity: 1,
                 color: 'rgba(255,255,255,1.0)',
@@ -388,27 +506,27 @@
             }
             }
         }
-        map.createPane('pane_20042020_4');
-        map.getPane('pane_20042020_4').style.zIndex = 404;
-        map.getPane('pane_20042020_4').style['mix-blend-mode'] = 'normal';
-        var layer_20042020_4 = new L.geoJson(json_20042020_4, {
+        map.createPane('pane_20042020_5');
+        map.getPane('pane_20042020_5').style.zIndex = 405;
+        map.getPane('pane_20042020_5').style['mix-blend-mode'] = 'normal';
+        var layer_20042020_5 = new L.geoJson(json_20042020_5, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_20042020_4',
-            layerName: 'layer_20042020_4',
-            pane: 'pane_20042020_4',
-            onEachFeature: pop_20042020_4,
+            dataVar: 'json_20042020_5',
+            layerName: 'layer_20042020_5',
+            pane: 'pane_20042020_5',
+            onEachFeature: pop_20042020_5,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_20042020_4_0(feature));
+                return L.circleMarker(latlng, style_20042020_5_0(feature));
             },
         });
-        bounds_group.addLayer(layer_20042020_4);
-        map.addLayer(layer_20042020_4);
-        function pop_Barreirassanitrias_5(feature, layer) {
+        bounds_group.addLayer(layer_20042020_5);
+        map.addLayer(layer_20042020_5);
+        function pop_Barreirassanitrias_6(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -432,11 +550,11 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Barreirassanitrias_5_0(feature) {
+        function style_Barreirassanitrias_6_0(feature) {
             switch(String(feature.properties['Nome'])) {
                 case 'Turma Alpha':
                     return {
-                pane: 'pane_Barreirassanitrias_5',
+                pane: 'pane_Barreirassanitrias_6',
                 shape: 'diamond',
                 radius: 8.8,
                 opacity: 1,
@@ -453,7 +571,7 @@
                     break;
                 case 'Turma Bravo':
                     return {
-                pane: 'pane_Barreirassanitrias_5',
+                pane: 'pane_Barreirassanitrias_6',
                 shape: 'diamond',
                 radius: 8.8,
                 opacity: 1,
@@ -470,27 +588,27 @@
                     break;
             }
         }
-        map.createPane('pane_Barreirassanitrias_5');
-        map.getPane('pane_Barreirassanitrias_5').style.zIndex = 405;
-        map.getPane('pane_Barreirassanitrias_5').style['mix-blend-mode'] = 'normal';
-        var layer_Barreirassanitrias_5 = new L.geoJson(json_Barreirassanitrias_5, {
+        map.createPane('pane_Barreirassanitrias_6');
+        map.getPane('pane_Barreirassanitrias_6').style.zIndex = 406;
+        map.getPane('pane_Barreirassanitrias_6').style['mix-blend-mode'] = 'normal';
+        var layer_Barreirassanitrias_6 = new L.geoJson(json_Barreirassanitrias_6, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Barreirassanitrias_5',
-            layerName: 'layer_Barreirassanitrias_5',
-            pane: 'pane_Barreirassanitrias_5',
-            onEachFeature: pop_Barreirassanitrias_5,
+            dataVar: 'json_Barreirassanitrias_6',
+            layerName: 'layer_Barreirassanitrias_6',
+            pane: 'pane_Barreirassanitrias_6',
+            onEachFeature: pop_Barreirassanitrias_6,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.shapeMarker(latlng, style_Barreirassanitrias_5_0(feature));
+                return L.shapeMarker(latlng, style_Barreirassanitrias_6_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Barreirassanitrias_5);
-        map.addLayer(layer_Barreirassanitrias_5);
-        function pop_Unidadesdesade_6(feature, layer) {
+        bounds_group.addLayer(layer_Barreirassanitrias_6);
+        map.addLayer(layer_Barreirassanitrias_6);
+        function pop_Unidadesdesade_7(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -523,11 +641,11 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Unidadesdesade_6_0(feature) {
+        function style_Unidadesdesade_7_0(feature) {
             switch(String(feature.properties['nome'])) {
                 case 'UBS Anorinda':
                     return {
-                pane: 'pane_Unidadesdesade_6',
+                pane: 'pane_Unidadesdesade_7',
                 radius: 8.0,
                 opacity: 1,
                 color: 'rgba(50,87,128,1.0)',
@@ -543,7 +661,7 @@
                     break;
                 case 'UBS Santa Luzia':
                     return {
-                pane: 'pane_Unidadesdesade_6',
+                pane: 'pane_Unidadesdesade_7',
                 radius: 8.0,
                 opacity: 1,
                 color: 'rgba(50,87,128,1.0)',
@@ -559,7 +677,7 @@
                     break;
                 case 'UBS Santo Antônio':
                     return {
-                pane: 'pane_Unidadesdesade_6',
+                pane: 'pane_Unidadesdesade_7',
                 radius: 8.0,
                 opacity: 1,
                 color: 'rgba(50,87,128,1.0)',
@@ -575,7 +693,7 @@
                     break;
                 case 'UBS Sebastião Martins':
                     return {
-                pane: 'pane_Unidadesdesade_6',
+                pane: 'pane_Unidadesdesade_7',
                 radius: 8.0,
                 opacity: 1,
                 color: 'rgba(50,87,128,1.0)',
@@ -591,26 +709,26 @@
                     break;
             }
         }
-        map.createPane('pane_Unidadesdesade_6');
-        map.getPane('pane_Unidadesdesade_6').style.zIndex = 406;
-        map.getPane('pane_Unidadesdesade_6').style['mix-blend-mode'] = 'normal';
-        var layer_Unidadesdesade_6 = new L.geoJson(json_Unidadesdesade_6, {
+        map.createPane('pane_Unidadesdesade_7');
+        map.getPane('pane_Unidadesdesade_7').style.zIndex = 407;
+        map.getPane('pane_Unidadesdesade_7').style['mix-blend-mode'] = 'normal';
+        var layer_Unidadesdesade_7 = new L.geoJson(json_Unidadesdesade_7, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Unidadesdesade_6',
-            layerName: 'layer_Unidadesdesade_6',
-            pane: 'pane_Unidadesdesade_6',
-            onEachFeature: pop_Unidadesdesade_6,
+            dataVar: 'json_Unidadesdesade_7',
+            layerName: 'layer_Unidadesdesade_7',
+            pane: 'pane_Unidadesdesade_7',
+            onEachFeature: pop_Unidadesdesade_7,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_Unidadesdesade_6_0(feature));
+                return L.circleMarker(latlng, style_Unidadesdesade_7_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Unidadesdesade_6);
-        map.addLayer(layer_Unidadesdesade_6);
+        bounds_group.addLayer(layer_Unidadesdesade_7);
+        map.addLayer(layer_Unidadesdesade_7);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -622,34 +740,54 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'Unidades de saúde<br /><table><tr><td style="text-align: center;"><img src="legend/Unidadesdesade_6_UBSAnorinda0.png" /></td><td>UBS Anorinda</td></tr><tr><td style="text-align: center;"><img src="legend/Unidadesdesade_6_UBSSantaLuzia1.png" /></td><td>UBS Santa Luzia</td></tr><tr><td style="text-align: center;"><img src="legend/Unidadesdesade_6_UBSSantoAntônio2.png" /></td><td>UBS Santo Antônio</td></tr><tr><td style="text-align: center;"><img src="legend/Unidadesdesade_6_UBSSebastiãoMartins3.png" /></td><td>UBS Sebastião Martins</td></tr></table>': layer_Unidadesdesade_6,'Barreiras sanitárias<br /><table><tr><td style="text-align: center;"><img src="legend/Barreirassanitrias_5_TurmaAlpha0.png" /></td><td>Turma Alpha</td></tr><tr><td style="text-align: center;"><img src="legend/Barreirassanitrias_5_TurmaBravo1.png" /></td><td>Turma Bravo</td></tr></table>': layer_Barreirassanitrias_5,'20-04-2020<br /><table><tr><td style="text-align: center;"><img src="legend/20042020_4_10.png" /></td><td>1</td></tr><tr><td style="text-align: center;"><img src="legend/20042020_4_31.png" /></td><td>3</td></tr></table>': layer_20042020_4,'<img src="legend/Ruas_3.png" /> Ruas': layer_Ruas_3,'<img src="legend/Bairros_2.png" /> Bairros': layer_Bairros_2,'<img src="legend/Perimetro_1.png" /> Perimetro': layer_Perimetro_1,"Google Satellite": layer_GoogleSatellite_0,}).addTo(map);
+        L.control.layers(baseMaps,{'Unidades de saúde<br /><table><tr><td style="text-align: center;"><img src="legend/Unidadesdesade_7_UBSAnorinda0.png" /></td><td>UBS Anorinda</td></tr><tr><td style="text-align: center;"><img src="legend/Unidadesdesade_7_UBSSantaLuzia1.png" /></td><td>UBS Santa Luzia</td></tr><tr><td style="text-align: center;"><img src="legend/Unidadesdesade_7_UBSSantoAntônio2.png" /></td><td>UBS Santo Antônio</td></tr><tr><td style="text-align: center;"><img src="legend/Unidadesdesade_7_UBSSebastiãoMartins3.png" /></td><td>UBS Sebastião Martins</td></tr></table>': layer_Unidadesdesade_7,'Barreiras sanitárias<br /><table><tr><td style="text-align: center;"><img src="legend/Barreirassanitrias_6_TurmaAlpha0.png" /></td><td>Turma Alpha</td></tr><tr><td style="text-align: center;"><img src="legend/Barreirassanitrias_6_TurmaBravo1.png" /></td><td>Turma Bravo</td></tr></table>': layer_Barreirassanitrias_6,'20-04-2020<br /><table><tr><td style="text-align: center;"><img src="legend/20042020_5_10.png" /></td><td>1</td></tr><tr><td style="text-align: center;"><img src="legend/20042020_5_31.png" /></td><td>3</td></tr></table>': layer_20042020_5,'<img src="legend/Ruas_4.png" /> Ruas': layer_Ruas_4,'<img src="legend/Bairros_3.png" /> Bairros': layer_Bairros_3,'Percentual dos destinos<br /><table><tr><td style="text-align: center;"><img src="legend/Percentualdosdestinos_2_140.png" /></td><td>1.4%</td></tr><tr><td style="text-align: center;"><img src="legend/Percentualdosdestinos_2_161.png" /></td><td>1.6%</td></tr><tr><td style="text-align: center;"><img src="legend/Percentualdosdestinos_2_172.png" /></td><td>1.7%</td></tr><tr><td style="text-align: center;"><img src="legend/Percentualdosdestinos_2_313.png" /></td><td>3.1%</td></tr><tr><td style="text-align: center;"><img src="legend/Percentualdosdestinos_2_7734.png" /></td><td>77.3%</td></tr><tr><td style="text-align: center;"><img src="legend/Percentualdosdestinos_2_Semregistro5.png" /></td><td>Sem registro</td></tr></table>': layer_Percentualdosdestinos_2,'<img src="legend/Perimetro_1.png" /> Perimetro': layer_Perimetro_1,"Google Satellite": layer_GoogleSatellite_0,}).addTo(map);
         setBounds();
         var i = 0;
-        layer_Bairros_2.eachLayer(function(layer) {
+        layer_Percentualdosdestinos_2.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Nome'] !== null?String('<div style="color: #ffffff; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Nome']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Bairros_2'});
+            layer.bindTooltip((layer.feature.properties['Nome'] !== null?String('<div style="color: #ffffff; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Nome']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Percentualdosdestinos_2'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
               addLabel(layer, i);
               i++;
         });
-        resetLabels([layer_Bairros_2,layer_Ruas_3,layer_20042020_4]);
+        var i = 0;
+        layer_Bairros_3.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nome'] !== null?String('<div style="color: #ffffff; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Nome']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Bairros_3'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        map.addControl(new L.Control.Search({
+            layer: layer_Ruas_4,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'name'}));
+        document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
+        resetLabels([layer_Percentualdosdestinos_2,layer_Bairros_3,layer_Ruas_4,layer_20042020_5]);
         map.on("zoomend", function(){
-            resetLabels([layer_Bairros_2,layer_Ruas_3,layer_20042020_4]);
+            resetLabels([layer_Percentualdosdestinos_2,layer_Bairros_3,layer_Ruas_4,layer_20042020_5]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_Bairros_2,layer_Ruas_3,layer_20042020_4]);
+            resetLabels([layer_Percentualdosdestinos_2,layer_Bairros_3,layer_Ruas_4,layer_20042020_5]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_Bairros_2,layer_Ruas_3,layer_20042020_4]);
+            resetLabels([layer_Percentualdosdestinos_2,layer_Bairros_3,layer_Ruas_4,layer_20042020_5]);
         });
         </script>
     </body>
-</html>
+
 	<br></br>
     
 	<footer align="center"; style="background-color:green";>
