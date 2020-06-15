@@ -1,0 +1,1 @@
+var json_Casossuspeitos7_7 = {"type":"FeatureCollection","name":"Casossuspeitos7_7","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":null,"Data":"14-06-2020"},"geometry":{"type":"Point","coordinates":[-53.272273748812459,-22.292784957550239]}}]}
